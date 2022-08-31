@@ -37,7 +37,7 @@ class ShareController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'share_name' => 'required',
+            'share_name' => 'required|string',
             'share_price' => 'required|integer',
             'share_qty' => 'required|integer',
         ]);
@@ -47,7 +47,7 @@ class ShareController extends Controller
             'share_qty' => $request->get('share_qty'),
         ]);
         $share->save();
-        return redirect('/shares')->with('success', 'Stock has been added');
+//        return redirect('/shares')->with('success', 'Stock has been added');
     }
 
     /**
