@@ -33,5 +33,12 @@ class User extends Model
         );
     }
 
+    //    Attempt 2: Roles that belong to the user
+    public function friends() {
+        return ($this->belongsToMany(User::class,
+            'friends', 'id', 'user_id','user_id')
+        );
+    }
+
 
 }

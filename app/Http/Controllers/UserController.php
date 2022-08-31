@@ -16,11 +16,14 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+//        $friends = $users->friends();
+//        $userFriends = $users->friends();
 
         foreach ($users as $user) {
-//        $user->friends = $user->userFriends();
+        $user->friends = $user->userFriends();
+//        $user->friends = ($user->friends());
         }
-        var_dump($users);
+//        var_dump($users);
         return view('users.index', compact('users', $users));
     }
 

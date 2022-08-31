@@ -19,6 +19,7 @@
                 <td>Name</td>
                 <td>Age</td>
                 <td>Company</td>
+                <td>Friends</td>
                 <td>Add Friend</td>
                 <td colspan="2">Update</td>
             </tr>
@@ -30,6 +31,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->age}}</td>
                     <td>{{$user->company}}</td>
+                    <td>{{$user->friends}}</td>
                     <td>
                         <a href="{{ route('friends.create',$user->id)}}" class="btn btn-primary">{{$user->name}}: Add New Friend</a>
                     </td>
