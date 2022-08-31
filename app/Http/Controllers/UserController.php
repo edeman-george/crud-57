@@ -19,10 +19,19 @@ class UserController extends Controller
 //        $friends = $users->friends();
 //        $userFriends = $users->friends();
 
-//        foreach ($users as $user) {
-//        $user->friends = $user->userFriends();
-//        $user->friends = ($user->friends());
-//        }
+
+        foreach ($users as $user) {
+//        $user->friends = json_encode($user->userFriends());
+//        $user->friends = json_encode(["dan","dave"]);
+            $investments = [];
+        foreach($user->investments as $investment) {
+            $investments.array_push($investment->id);
+        }
+//        $user->friends = json_encode($investments);
+
+            //works
+//        $user->friends = json_encode($user->friends());
+        }
 //        var_dump($users);
         return view('users.index', compact('users', $users));
     }
