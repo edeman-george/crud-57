@@ -19,10 +19,10 @@ class UserController extends Controller
 //        $friends = $users->friends();
 //        $userFriends = $users->friends();
 
-        foreach ($users as $user) {
-        $user->friends = $user->userFriends();
+//        foreach ($users as $user) {
+//        $user->friends = $user->userFriends();
 //        $user->friends = ($user->friends());
-        }
+//        }
 //        var_dump($users);
         return view('users.index', compact('users', $users));
     }
