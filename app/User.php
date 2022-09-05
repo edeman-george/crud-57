@@ -29,7 +29,10 @@ class User extends Model
      */
     public function investments() {
         return $this->belongsToMany(
-            Share::class, 'share_user', 'id', 'id',);
+            'App\Share'
+//            Share::class
+//            'share_user', 'id', 'id'
+        );
     }
 
     //    Roles that belong to the user
