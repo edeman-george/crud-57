@@ -34,5 +34,7 @@ Route::get('/friends/create/{id}', 'FriendsController@create', function ($id) {
 
 //Route::post('shares', 'ShareController@store');
 Route::resource('shares', 'ShareController');
-Route::resource('users', 'UserController');
-Route::get('user/{id}', 'UserController@show');
+//Route::resource('users', 'UserController');
+Route::get('users/create', 'UserController@create')->name('user.create');
+Route::get('users/{user}', 'UserController@show')->name('user.show');
+//Route::get('user/{id}', 'UserController@show');

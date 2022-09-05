@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Share;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
@@ -26,7 +27,7 @@ class UserController extends Controller
 //        foreach($user->investments as $investment) {
 //            $investments.array_push($investment->id);
 //        }
-        $user->friends = json_encode($investments);
+//        $user->friends = json_encode($investments);
 
             //works - Timestamps
 //        $user->friends = json_encode($user->friends());
@@ -42,7 +43,21 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $user = new User;
+        $user->name = 'Testy';
+        $user->age = 40;
+        $user->friends = 'Mark';
+        $user->company = 'Dell';
+        $user->annual_income = 40000;
+        $user->address = '10 Wood Ln';
+
+        $user->save();
+
+        $shares = Share::find([2, 3]);
+        $user->investments()->attach($shares);
+
+        return 'Success';
+//        return view('users.create');
     }
 
     /**
@@ -77,7 +92,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $id;
+        return view('users.show', compact( 'user', $user));
     }
 
 
