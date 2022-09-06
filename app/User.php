@@ -20,9 +20,10 @@ class User extends Model
         'company',
     ];
 
-    public function successMessage(): string
+
+    public function accountant()
     {
-        return "successful";
+        return $this->belongsTo(Accountant::class);
     }
     /**
      * The investments that belong to the user.
@@ -34,20 +35,5 @@ class User extends Model
 //            'share_user', 'id', 'id'
         );
     }
-
-//    //    Roles that belong to the user
-//    public function userFriends() {
-//        return ($this->belongsToMany(User::class,
-//            'friends', 'id', 'user_id'
-//        )->withPivot( 'friend_id')->orderBy('user_id', 'desc')
-//        );
-//    }
-//
-//    //    Attempt 2: Roles that belong to the user
-//    public function friends() {
-//        return ($this->belongsToMany(User::class,
-//            'friends', 'id', 'user_id','user_id')
-//        );
-//    }
 
 }

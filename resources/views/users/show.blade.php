@@ -1,6 +1,8 @@
 <h2>User Name: </h2>
 <p>{{ $user->name }} || ID: {{ $user->id}}</p>
 
+<p>Accountant: {{$user->accountant->name}}</p>
+
 <h3>User has invested in:</h3>
 
 <ul>
