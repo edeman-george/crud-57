@@ -42,4 +42,10 @@ class User extends Model
         return $this->hasOne(Team::class);
     }
 
+    public function followersChild() {
+        return $this->belongsToMany(
+            self::class, 'followers', 'friend_id', 'user_id'
+        );
+    }
+
 }

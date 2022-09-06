@@ -10,4 +10,11 @@
     @endforeach
 </ul>
 
+<h3>{{ $user->name }} followers:</h3>
+<ul>
+    @foreach($user->followersChild as $follower)
+        <li>{{ $follower->name }}</li>
+    @endforeach
+</ul>
+
 <p> Favourite team: {{$user->team->name}}</p>

@@ -14,11 +14,10 @@ class Share extends Model
         'share_qty'
     ];
 
-    public function investments() {
+    public function owners() {
         return $this->belongsToMany(
 
             User::class
-//            'share_user', 'id', 'id'
         );
     }
 }
