@@ -36,4 +36,10 @@ class User extends Model
         );
     }
 
+    //belongs to: when model table has related class id on it
+    //has one/many: when model is referred to on related table e.g. team table > user_id column
+    public function team() {
+        return $this->hasOne(Team::class);
+    }
+
 }
