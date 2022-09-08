@@ -44,6 +44,16 @@ class ShareTest extends TestCase
 
         $response->assertStatus(201);
     }
+    public function testFailingShareSave()
+    {
+        $response = $this->json('POST', '/shares', [
+            'share_name' => 'KFC',
+            'share_price' => 100,
+            'share_qty' => 'onion',
+        ]);
+
+        $response->assertStatus(500);
+    }
 
 
 }
