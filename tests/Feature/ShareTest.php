@@ -20,11 +20,11 @@ class ShareTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testStore_new_shares()
+    public function testNewShareStatus()
     {
-        $shareName = 'M&S';
-        $sharePrice = 100;
-        $shareQuantity = 10;
+        $shareName = 'RWD';
+        $sharePrice = 1000;
+        $shareQuantity = 90;
 
         $response = $this->followingRedirects()
             ->post('/shares', [
@@ -34,15 +34,16 @@ class ShareTest extends TestCase
             ->assertStatus(200);
     }
 
-    public function test2_store_new_shares()
+    public function testNewShareSave()
     {
-        $data = array(
-        'share_name' => 'Tent',
-        'share_price' => 33,
-        'share_qty' => 4,
-        );
-        // array / string errors
-        $response = $this->post('shares', $data);
-        $response->assertStatus(200);
+        $response = $this->json('POST', '/shares', [
+            'share_name' => 'KFC',
+            'share_price' => 100,
+            'share_qty' => 54,
+        ]);
+
+        $response->assertStatus(201);
     }
+
+
 }

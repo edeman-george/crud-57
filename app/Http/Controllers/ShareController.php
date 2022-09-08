@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Share;
+use Illuminate\Support\Facades\Validator;
 
 class ShareController extends Controller
 {
@@ -36,18 +37,23 @@ class ShareController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $data = $request->all();
+        $validator = Validator::make($data, [
             'share_name' => 'required|string',
             'share_price' => 'required|integer',
             'share_qty' => 'required|integer',
         ]);
-        $share = new Share([
-            'share_name' => $request->get('share_name'),
-            'share_price' => $request->get('share_price'),
-            'share_qty' => $request->get('share_qty'),
-        ]);
-        $share->save();
-        return redirect('/shares')->with('success', 'Stock has been added');
+        if($validator->fails()) {
+            return response($validator->messages(), 500);
+        } else {
+            $share = new Share([
+                'share_name' => $request->get('share_name'),
+                'share_price' => $request->get('share_price'),
+                'share_qty' => $request->get('share_qty'),
+            ]);
+            $share->save();
+            return response()->json('success', 201);
+        }
     }
 
     /**
